@@ -1,15 +1,12 @@
 import React from 'react';
-import { render } from 'react-dom';
+import { render } from 'react-dom';
+import { BrowserRouter } from 'react-router-dom';
+import App from './components/App';
+
 import './styles.scss';
 
-const App = () => {
-	return (
-		<div>
-			<h3>Our Application Is Alive</h3>
-			<p>This isn’t reality. This is just fantasy.</p>
-			<p>Yes I am quoting Star Trek I cant help it.</p>
-		</div>
-	);
-}
-
-render(<App />, document.getElementById('app'));
+render((
+  	<BrowserRouter>
+    	<App />
+  	</BrowserRouter>
+), document.getElementById('app'))
