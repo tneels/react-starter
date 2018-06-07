@@ -1,8 +1,19 @@
-body {
-	font-family: 'open sans', sans-serif;
-	font-size: 16px;
-}
+// ~ refers to node_modules path
 
-p {
-	font-size: 22px;
-}
+// @import "~materialize-css/dist/css/materialize.min.css";
+
+// CONFIG
+@import "styles/_config/colors";
+@import "styles/_config/variables";
+
+// REBOOT CSS
+@import "styles/_vendors/normalize";
+
+// GLOBAL DESIGN AND GRID
+@import "styles/_core/global";
+@import "styles/_core/grid";
+
+// MATERIALIZE-CSS COMPONENTS
+@import "styles/_m-components/components";
+
+// APP COMPONENTS

@@ -3,7 +3,9 @@ import React, { Component } from 'react';
 class First extends Component {
 	render() {
 		return (
-			<div>First page</div>
+			<div className="container">
+				First page
+			</div>
 		);
 	}
 }
