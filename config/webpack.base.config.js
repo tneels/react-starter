@@ -2,6 +2,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports = {
+	devtool: 'source-map',
 	module: {
 		rules: [
 			{
@@ -13,10 +14,21 @@ module.exports = {
 			},
 			{
 				test: /\.scss$/,
-				use: ExtractTextPlugin.extract({
+				exclude: /node_modules/,
+				use: ['css-hot-loader'].concat(ExtractTextPlugin.extract({
 					fallback: "style-loader",
-					use: "css-loader!sass-loader",
-				})
+					use: [{
+						loader: 'css-loader',
+						query: {
+							sourceMap: true
+						}
+					}, {
+						loader: 'sass-loader',
+						options: {
+							sourceMap: true
+						}
+					}]
+				}))
 			}
 		]
 	},
@@ -25,6 +37,6 @@ module.exports = {
 			template: './src/index.html',
 			filename: './index.html'
 		}),
-		new ExtractTextPlugin('style.css')
+		new ExtractTextPlugin({ filename: 'style.css', disable: false, allChunks: true }), // this means dist/style.css
 	]
 }
